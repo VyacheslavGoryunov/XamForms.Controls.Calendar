@@ -389,6 +389,24 @@ namespace XamForms.Controls
 
 		#endregion
 
+		#region AllowNullSelect
+
+		public static readonly BindableProperty AllowNullSelectProperty =
+			BindableProperty.Create(nameof(AllowNullSelect), typeof(bool), typeof(Calendar), true,
+				propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeCalendar(CalandarChanges.All));
+
+		/// <summary>
+		/// Gets or sets a the number of months to show
+		/// </summary>
+		/// <value>The start date.</value>
+		public bool AllowNullSelect
+		{
+			get => (bool)GetValue(AllowNullSelectProperty);
+			set => SetValue(AllowNullSelectProperty, value);
+		}
+
+		#endregion
+		
 		public DateTime CalendarStartDate(DateTime date)
 		{
 			var start = date;
@@ -400,6 +418,7 @@ namespace XamForms.Controls
 			}
 			return start;
 		}
+	
 
 		#region Functions
 
@@ -616,7 +635,7 @@ namespace XamForms.Controls
 		protected void DateClickedEvent(object s, EventArgs a)
 		{
 			var selectedDate = (s as CalendarButton).Date;
-			if (SelectedDate.HasValue && selectedDate.HasValue && SelectedDate.Value == selectedDate.Value)
+			if (SelectedDate.HasValue && selectedDate.HasValue && SelectedDate.Value == selectedDate.Value && AllowNullSelect)
 			{
 				ChangeSelectedDate(selectedDate);
 				SelectedDate = null;

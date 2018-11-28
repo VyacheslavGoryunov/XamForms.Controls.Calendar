@@ -58,6 +58,13 @@ Then add the xaml:
 ```
 #### Documentation: [Wiki](https://github.com/rebeccaXam/XamForms.Controls.Calendar/wiki)
 
+#### How to disable deselect selected date?
+Use property AllowNullSelect.
+
+```xml
+<controls:Calendar AllowNullSelect="False" Padding="10,0,10,0" StartDay="Monday" SelectedBorderWidth="4" DisabledBorderColor="Black" />
+```
+
 #### Contributors
 * [rebeccaXam](https://github.com/rebeccaXam)
 
